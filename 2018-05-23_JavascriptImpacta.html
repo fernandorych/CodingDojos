@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Coding Dojo Impacta</title>
+  <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.6.1.css">
+</head>
+<body>
+  <div id="qunit"></div>
+  <div id="qunit-fixture"></div>
+  <script src="https://code.jquery.com/qunit/qunit-2.6.1.js"></script>
+  <script>
+    QUnit.module("Teste inicial");
+    QUnit.test( "meu exemplo inicial", function( assert ) {
+      var value = "olá";
+      assert.equal( value, "olá", "Espero que value seja olá" );
+    });
+
+    QUnit.module("Calculadora");
+    QUnit.test( "Minha calculadora", function( assert ) {
+      assert.equal(1,1, "Testando que 1 é igual a 1");
+
+      assert.equal(soma(1,1), 2, "Testando se 1 + 1 = 2");
+      assert.equal(soma(1,2), 3, "Testando se 1 + 2 = 3");
+      assert.equal(soma(2,2), 4, "Testando se 2 + 2 = 4");
+      assert.equal(soma(2,3), 5, "Testando se 2 + 3 = 5");
+      assert.equal(soma(3,3), 6, "Testando se 3 + 3 = 6");
+      assert.equal(soma(5,18), 23, "Testando se 5 + 18 = 23");
+
+      assert.ok(soma(1,1) == 2, "Testando se 1 + 1 = 2");
+    });
+
+    function soma (x, y)
+    {  
+        return x + y;
+    }
+
+
+    QUnit.module("Juiz Joken Po com Ifs");
+    QUnit.test( "Um juiz básico de Joken Po", function( assert ) {
+
+        //Empate
+        assert.equal(confereIgualdade("pedra", "tesoura"), false, "Pedra é diferente de tesoura");
+        assert.equal(confereIgualdade("pedra", "pedra"), true, "se pedra é pedra");
+        assert.equal(confereIgualdade("tesoura", "tesoura"), true, "tesoura deve ser igual a tesoura");
+        
+        //Tesoura
+        assert.equal(confereVencedor("tesoura", "papel"), "tesoura", "tesoura deve ganhar de papel");
+        assert.equal(confereVencedor("tesoura", "pedra"), "pedra", "pedra ganha de tesoura");
+        assert.equal(confereVencedor("tesoura", "tesoura"), "empate", "tesoura deve empatar com tesoura");
+
+        //Papel
+        assert.equal(confereVencedor("papel", "tesoura"), "tesoura", "tesoura deve ganhar de papel");
+        assert.equal(confereVencedor("papel", "pedra"), "papel", "papel deve ganhar de pedra");
+        assert.equal(confereVencedor("papel", "papel"), "empate", "papel deve empatar com papel");
+
+        //Pedra
+        assert.equal(confereVencedor("pedra", "tesoura"), "pedra", "pedra ganha de tesoura");
+        assert.equal(confereVencedor("pedra", "papel"), "papel", "papel deve ganhar de pedra");
+        assert.equal(confereVencedor("pedra", "pedra"), "empate", "pedra deve empatar com pedra");
+    });
+
+    QUnit.module("Juiz Joken Po com Switch");
+    QUnit.test( "Um juiz básico de Joken Po", function( assert ) {
+ 
+        //Empate
+        assert.equal(confereIgualdade("pedra", "tesoura"), false, "Pedra é diferente de tesoura");
+        assert.equal(confereIgualdade("pedra", "pedra"), true, "se pedra é pedra");
+        assert.equal(confereIgualdade("tesoura", "tesoura"), true, "tesoura deve ser igual a tesoura");
+        
+        //Tesoura
+        assert.equal(confereVencedor2("tesoura", "papel"), "tesoura", "tesoura deve ganhar de papel");
+        assert.equal(confereVencedor2("tesoura", "pedra"), "pedra", "pedra ganha de tesoura");
+        assert.equal(confereVencedor2("tesoura", "tesoura"), "empate", "tesoura deve empatar com tesoura");
+
+        //Papel
+        assert.equal(confereVencedor2("papel", "tesoura"), "tesoura", "tesoura deve ganhar de papel");
+        assert.equal(confereVencedor2("papel", "pedra"), "papel", "papel deve ganhar de pedra");
+        assert.equal(confereVencedor2("papel", "papel"), "empate", "papel deve empatar com papel");
+
+        //Pedra
+        assert.equal(confereVencedor2("pedra", "tesoura"), "pedra", "pedra ganha de tesoura");
+        assert.equal(confereVencedor2("pedra", "papel"), "papel", "papel deve ganhar de pedra");
+        assert.equal(confereVencedor2("pedra", "pedra"), "empate", "pedra deve empatar com pedra");
+    });
+
+    QUnit.module("Juiz Joken Po com Ternário");
+    QUnit.test( "Um juiz básico de Joken Po", function( assert ) {
+
+        //Empate
+        assert.equal(confereIgualdade("pedra", "tesoura"), false, "Pedra é diferente de tesoura");
+        assert.equal(confereIgualdade("pedra", "pedra"), true, "se pedra é pedra");
+        assert.equal(confereIgualdade("tesoura", "tesoura"), true, "tesoura deve ser igual a tesoura");
+        
+        //Tesoura
+        assert.equal(confereVencedor3("tesoura", "papel"), "tesoura", "tesoura deve ganhar de papel");
+        assert.equal(confereVencedor3("tesoura", "pedra"), "pedra", "pedra ganha de tesoura");
+        assert.equal(confereVencedor3("tesoura", "tesoura"), "empate", "tesoura deve empatar com tesoura");
+
+        //Papel
+        assert.equal(confereVencedor3("papel", "tesoura"), "tesoura", "tesoura deve ganhar de papel");
+        assert.equal(confereVencedor3("papel", "pedra"), "papel", "papel deve ganhar de pedra");
+        assert.equal(confereVencedor3("papel", "papel"), "empate", "papel deve empatar com papel");
+
+        //Pedra
+        assert.equal(confereVencedor3("pedra", "tesoura"), "pedra", "pedra ganha de tesoura");
+        assert.equal(confereVencedor3("pedra", "papel"), "papel", "papel deve ganhar de pedra");
+        assert.equal(confereVencedor3("pedra", "pedra"), "empate", "pedra deve empatar com pedra");
+    });
+
+    QUnit.module("Juiz Joken Po com uma linha");
+    QUnit.test( "Um juiz básico de Joken Po", function( assert ) {
+
+        //Empate
+        assert.equal(confereIgualdade("pedra", "tesoura"), false, "Pedra é diferente de tesoura");
+        assert.equal(confereIgualdade("pedra", "pedra"), true, "se pedra é pedra");
+        assert.equal(confereIgualdade("tesoura", "tesoura"), true, "tesoura deve ser igual a tesoura");
+        
+        //Tesoura
+        assert.equal(confereVencedor4("tesoura", "papel"), "tesoura", "tesoura deve ganhar de papel");
+        assert.equal(confereVencedor4("tesoura", "pedra"), "pedra", "pedra ganha de tesoura");
+        assert.equal(confereVencedor4("tesoura", "tesoura"), "empate", "tesoura deve empatar com tesoura");
+
+        //Papel
+        assert.equal(confereVencedor4("papel", "tesoura"), "tesoura", "tesoura deve ganhar de papel");
+        assert.equal(confereVencedor4("papel", "pedra"), "papel", "papel deve ganhar de pedra");
+        assert.equal(confereVencedor4("papel", "papel"), "empate", "papel deve empatar com papel");
+
+        //Pedra
+        assert.equal(confereVencedor4("pedra", "tesoura"), "pedra", "pedra ganha de tesoura");
+        assert.equal(confereVencedor4("pedra", "papel"), "papel", "papel deve ganhar de pedra");
+        assert.equal(confereVencedor4("pedra", "pedra"), "empate", "pedra deve empatar com pedra");
+    });
+
+    QUnit.module("Juiz Joken Po com 3 jogadores");
+    QUnit.test( "Um juiz básico de Joken Po", function( assert ) {
+
+        //Empate triplo
+        assert.equal(confereVencedor5("tesoura", "tesoura", "tesoura"), "empate", "empate triplo de tesoura");
+        assert.equal(confereVencedor5("papel", "papel", "papel"), "empate", "empate triplo de papel");
+        assert.equal(confereVencedor5("pedra", "pedra", "pedra"), "empate", "empate triplo de pedra");
+
+        //Empate no-win
+        assert.equal(confereVencedor5("tesoura", "papel", "pedra"), "empate", "empate triplo de no-win 1");
+        assert.equal(confereVencedor5("tesoura", "pedra", "papel"), "empate", "empate triplo de no-win 2");
+        assert.equal(confereVencedor5("papel", "tesoura", "pedra"), "empate", "empate triplo de no-win 3");
+        assert.equal(confereVencedor5("papel", "pedra", "tesoura"), "empate", "empate triplo de no-win 4");
+        assert.equal(confereVencedor5("pedra", "papel", "tesoura"), "empate", "empate triplo de no-win 5");
+        assert.equal(confereVencedor5("pedra", "tesoura", "papel"), "empate", "empate triplo de no-win 6");
+
+        //Tesoura
+        //assert.equal(confereVencedor4("tesoura", "papel"), "tesoura", "tesoura deve ganhar de papel");
+        //assert.equal(confereVencedor4("tesoura", "pedra"), "pedra", "pedra ganha de tesoura");
+        //assert.equal(confereVencedor4("tesoura", "tesoura"), "empate", "tesoura deve empatar com tesoura");
+
+        //Papel
+        //assert.equal(confereVencedor4("papel", "tesoura"), "tesoura", "tesoura deve ganhar de papel");
+        //assert.equal(confereVencedor4("papel", "pedra"), "papel", "papel deve ganhar de pedra");
+        //assert.equal(confereVencedor4("papel", "papel"), "empate", "papel deve empatar com papel");
+
+        //Pedra
+        //assert.equal(confereVencedor4("pedra", "tesoura"), "pedra", "pedra ganha de tesoura");
+        //assert.equal(confereVencedor4("pedra", "papel"), "papel", "papel deve ganhar de pedra");
+        //assert.equal(confereVencedor4("pedra", "pedra"), "empate", "pedra deve empatar com pedra");
+    });
+    
+    //Confere se as mãos foram iguais
+    function confereIgualdade(var1,var2)
+    {
+        return var1 == var2 ;
+    }
+
+    //Verifica qual o vencedor do jogo
+    function confereVencedor(var1,var2)
+    {
+        if(confereIgualdade(var1, var2)){
+            return "empate";
+        }
+        if(var1=="tesoura" && var2=="papel" || var1=="papel" && var2=="tesoura"){
+            return "tesoura";
+        }
+        else if(var1=="tesoura" && var2=="pedra" || var1=="pedra" && var2=="tesoura"){
+            return "pedra";
+        }
+        else 
+            return "papel";
+    }
+
+    //Verifica qual o vencedor do jogo com switch
+    function confereVencedor2(mao1, mao2){
+        if(mao1 == mao2)
+            return "empate";
+
+        switch(mao1)
+        {
+            case "papel":
+                return mao2 == "tesoura" ? "tesoura" : "papel";
+                break;
+            case "pedra":
+                return mao2 == "tesoura" ? "pedra" : "papel";
+                break;
+            default: //tesoura
+                return mao2 == "pedra" ? "pedra" : "tesoura";
+                break;
+        }
+    }
+
+    //Verifica qual o vencedor do jogo com ternário
+    function confereVencedor3(player1, player2)
+    {
+        return (player1 == player2) ? "empate" //verifica o empate
+                    : (player1 == "tesoura" ? (player2 == "pedra" ? "pedra" : "tesoura") //possibilidades para player1 tesoura
+                        : (player1 == "papel" ? (player2 == "pedra" ? "papel" : "tesoura") //possibilidades para player1 papel
+                            : (player2 == "papel" ? "papel" : "pedra") //player1 com certeza é pedra, testa player2 apenas
+                            )
+                        );
+    }
+
+    //Verifica qual o vencedor do jogo com ternário em uma linha
+    function confereVencedor4(player1, player2)
+    {
+        return (player1 == player2) ? "empate" : (player1 == "tesoura" ? (player2 == "pedra" ? "pedra" : "tesoura") : (player1 == "papel" ? (player2 == "pedra" ? "papel" : "tesoura") : (player2 == "papel" ? "papel" : "pedra")));
+    }
+
+    //Verifica qual o vencedor de 3 jogadores do jogo com ternário
+    function confereVencedor5(player1, player2, player3)
+    {
+        return (player1 == player2 && player1 == player3) ? "empate" : "game";
+    }
+    
+  </script>
+</body>
+</html>
